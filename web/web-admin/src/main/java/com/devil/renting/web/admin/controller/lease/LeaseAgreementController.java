@@ -57,7 +57,7 @@ public class LeaseAgreementController {
     public Result updateStatusById(@RequestParam Long id, @RequestParam LeaseStatus status) {
         LambdaUpdateWrapper<LeaseAgreement> updateWrapper = new LambdaUpdateWrapper<>();
         updateWrapper.eq(LeaseAgreement::getId,id)
-                .eq(LeaseAgreement::getStatus,status);
+                .set(LeaseAgreement::getStatus,status);
         service.update(updateWrapper);
         return Result.ok();
     }
